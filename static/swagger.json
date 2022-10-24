@@ -1,0 +1,235 @@
+{
+    "openapi": "3.0.3",
+    "info":{ 
+        "title":"API Documentation for Data Processing and Modeling",
+        "version":"1.0.0",
+        "description": "[ BASE URL : 127.0.0.1:5000]",
+        "termsOfService": "/kuis3"
+    },
+
+
+    "paths":{
+        "/tweet":{
+            "get":{
+                "tags" : ["Tweet"],
+                "summary": "Ambil semua tweet",
+                "description": "",
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                        
+                    },
+                    "400":{
+                        "description": "Misunderstood"
+                    },
+                    "401":{
+                        "description": "Unauthorized"
+                    },
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "500":{
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post":{
+                "tags" : ["Tweet"],
+                "summary": "Input Tweet Baru",
+                "description": "",
+                "requestBody":{
+                    "required": true,
+                    "content": {
+                        "multipart/form-data":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "text":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "400":{
+                        "description": "Misunderstood"
+                    },
+                    "401":{
+                        "description": "Unauthorized"
+                    },
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "500":{
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/tweet/{id}" : {
+            "get":{
+                "tags" : ["Tweet"],
+                "summary": "Ambil Tweet Berdasarkan ID",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID",
+                        "schema":{
+                            "type":"integer"
+                        }
+
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "400":{
+                        "description": "Misunderstood"
+                    },
+                    "401":{
+                        "description": "Unauthorized"
+                    },
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "500":{
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "put":{
+                "tags" : ["Tweet"],
+                "summary": "Edit Tweet Tertentu",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID",
+                        "schema":{
+                            "type":"integer"
+                        }
+
+                    }
+                ],
+                "requestBody":{
+                    "required": true,
+                    "content": {
+                        "multipart/form-data":{
+                            "schema":{
+                                "type": "object",           
+                                "properties": {
+                                    "text":{
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "400":{
+                        "description": "Misunderstood"
+                    },
+                    "401":{
+                        "description": "Unauthorized"
+                    },
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "500":{
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "delete":{
+                "tags" : ["Tweet"],
+                "summary": "Hapus Tweet Berdasarkan ID",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID",
+                        "schema":{
+                            "type":"integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "400":{
+                        "description": "Misunderstood"
+                    },
+                    "401":{
+                        "description": "Unauthorized"
+                    },
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "500":{
+                        "description": "Server Error"
+                    }
+                }
+            }
+
+        },
+        "/tweet/csv":{
+            "post":{
+                "tags" : ["Upload File"],
+                "summary": "Post a csv file",
+                "description": "",
+                "requestBody":{
+                    "required": true,
+                    "content": {
+                        "multipart/form-data":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "file":{
+                                        "type": "string",
+                                        "format": "base64"
+                                    }
+                                }
+   
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{
+                        "description": "Success"
+                    },
+                    "400":{
+                        "description": "Misunderstood"
+                    },
+                    "401":{
+                        "description": "Unauthorized"
+                    },
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "500":{
+                        "description": "Server Error"
+                    }
+                }
+            }
+        }
+    }
+}
